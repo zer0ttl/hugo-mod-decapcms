@@ -6,7 +6,7 @@ The files for Decap CMS get mounted in `static/admin/`.
 
 ## Use
 
-Import the module into your Hugo project's site config as follows:
+1. Import the module into your Hugo project's site config as follows:
 
 - Toml
 
@@ -23,4 +23,4 @@ module:
     - path: "github.com/zer0ttl/hugo-mod-decapcms"
 ```
 
-
+2. You can then add your own `static/admin/config.yml` file to modify the config for Decap CMS.

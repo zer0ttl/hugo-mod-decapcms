@@ -1,3 +1,43 @@
 backend:
   name: git-gateway
-  branch: main # Branch to update (optional; defaults to master)
+  branch: main
+  commit_messages:
+    create: "Create {{collection}} {{slug}}"
+    update: "Update {{collection}} {{slug}}"
+    delete: "Delete {{collection}} {{slug}}"
+    uploadMedia: "Upload {{path}}"
+    DeleteMedia: "Delete {{path}}"
+    openAuthoring: "{{message}}"
+
+publish_mode: editorial_workflow
+show_preview_links: true
+
+media_folder: 'assets/images' # Media files will be stored in the repo under images/uploads
+public_folder: '/images' # The src attribute for uploaded media will begin with /images/uploads
+
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  - name: 'posts' # Used in routes, e.g., /admin/collections/blog
+    label: 'Posts' # Used in the UI
+    label_singular: 'Post'
+    description: >
+      The Posts section will contain all articles, posts, and stories.
+    folder: 'content/blog' # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    path: "{{slug}}/index"
+    media_folder: "images"
+    public_folder: "images"
+    summary: "{{title}}"
+    preview_path: "posts/{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }

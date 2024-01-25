@@ -1,0 +1,4 @@
+module:
+  mounts:
+    - source: static/admin
+      target: static/admin
